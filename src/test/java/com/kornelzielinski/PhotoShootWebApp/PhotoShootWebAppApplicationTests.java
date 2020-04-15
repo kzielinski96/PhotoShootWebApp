@@ -140,7 +140,6 @@ class PhotoShootWebAppApplicationTests {
 
 		Category category = new Category();
 		category.setName("Cat1");
-		category.setNum_images(0);
 		categories.add(category);
 
 		for (Image image : imageRepository.findAll()) {

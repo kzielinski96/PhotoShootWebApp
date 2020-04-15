@@ -1,9 +1,6 @@
 package com.kornelzielinski.PhotoShootWebApp.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -12,6 +9,9 @@ import java.util.Set;
 
 @Entity(name="users")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 public class User {
 
     @Id
@@ -30,7 +30,7 @@ public class User {
     @Column(name = "created_at")
     private String createdAt;
 
-    @JsonIgnore
+    @JsonIgnoreProperties(value = {"user", "comments", "ratings", "categories"})
     @OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Image> images;
 

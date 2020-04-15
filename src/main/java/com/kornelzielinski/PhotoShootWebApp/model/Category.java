@@ -2,6 +2,7 @@ package com.kornelzielinski.PhotoShootWebApp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.context.annotation.EnableMBeanExport;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,10 +15,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private int num_images;
 
     @ManyToMany(mappedBy = "categories")
-    @JsonIgnore
+    @JsonIgnoreProperties(value = {"categories", "user", "comments", "ratings"})
     private Set<Image> images;
 
     public Category() {
@@ -37,14 +37,6 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getNum_images() {
-        return num_images;
-    }
-
-    public void setNum_images(int num_images) {
-        this.num_images = num_images;
     }
 
     public Set<Image> getImages() {

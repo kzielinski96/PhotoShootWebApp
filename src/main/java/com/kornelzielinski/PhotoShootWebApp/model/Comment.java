@@ -1,7 +1,6 @@
 package com.kornelzielinski.PhotoShootWebApp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 
@@ -15,10 +14,12 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "image_id")
+    @JsonIgnore
     private Image image;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     private String comment;

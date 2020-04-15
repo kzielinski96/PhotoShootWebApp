@@ -2,7 +2,9 @@ package com.kornelzielinski.PhotoShootWebApp.web;
 
 import com.kornelzielinski.PhotoShootWebApp.model.Admin;
 import com.kornelzielinski.PhotoShootWebApp.model.Category;
+import com.kornelzielinski.PhotoShootWebApp.model.Image;
 import com.kornelzielinski.PhotoShootWebApp.repos.CategoryRepository;
+import com.kornelzielinski.PhotoShootWebApp.repos.ImageRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,8 @@ public class CategoryController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ImageRepository imageRepository;
 
     @GetMapping()
     public List<Category> list() {
@@ -25,6 +29,8 @@ public class CategoryController {
     @GetMapping
     @RequestMapping("{id}")
     public Category get(@PathVariable Long id) {
+//        Category category = categoryRepository.getOne(id);
+//        return imageRepository.findByCategories(category);
         return categoryRepository.getOne(id);
     }
 

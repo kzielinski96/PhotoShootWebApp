@@ -1,7 +1,7 @@
 package com.kornelzielinski.PhotoShootWebApp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.persistence.*;
 
@@ -15,10 +15,12 @@ public class Rating {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "image_id")
+    @JsonIgnore
     private Image image;
 
     private int rating;

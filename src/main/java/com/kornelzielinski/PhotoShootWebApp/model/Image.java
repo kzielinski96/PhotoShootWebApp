@@ -1,9 +1,6 @@
 package com.kornelzielinski.PhotoShootWebApp.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -20,6 +17,7 @@ public class Image {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties("images")
     private User user;
 
     @Lob
@@ -32,11 +30,9 @@ public class Image {
     @Column(name = "created_at")
     private String createdAt;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "image", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Comment> comments;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "image", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Rating> ratings;
 
