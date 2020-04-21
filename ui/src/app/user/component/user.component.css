@@ -1,0 +1,25 @@
+.example-card {
+  max-width: 100%;
+}
+
+.container {
+  height: 100px;
+}
+
+#user-section {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  border: 3px;
+}
+
+#images-section {
+  position: absolute;
+  text-align: justify;
+  top: 20px;
+  right: 0;
+}
+
+app-image {
+  margin: 0 auto;
+}

@@ -1,0 +1,13 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <div *ngIf="comment.user?.username">
+      <a [routerLink]="['/users/', comment.user.id]">
+        <mat-card-title>{{ comment.user.username }}</mat-card-title>
+      </a>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ comment.comment }}</p>
+  </mat-card-content>
+</mat-card>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -61,7 +62,7 @@ class PhotoShootWebAppApplicationTests {
 		Image image = new Image();
 		User user = userRepository.findById(1L).get();
 		image.setUser(user);
-		image.setData(fileContent);
+		image.setImage(fileContent);
 		image.setDescription("Some nice view...");
 		image.setResolution("1920x1080");
 		image.setCreatedAt("2020-04-10");
@@ -95,7 +96,7 @@ class PhotoShootWebAppApplicationTests {
 
 		Image image = new Image();
 		image.setUser(user);
-		image.setData(fileContent1);
+		image.setImage(fileContent1);
 		image.setDescription("My car...");
 		image.setResolution("1920x1080");
 		image.setCreatedAt("2020-04-11");
@@ -127,7 +128,7 @@ class PhotoShootWebAppApplicationTests {
 		Comment comment = new Comment();
 		comment.setUser(user);
 		comment.setComment("Nice one...");
-		comment.setCreated_at("2020-04-10");
+		comment.setCreatedAt("2020-04-10");
 
 		image.addComment(comment);
 		imageRepository.save(image);
@@ -153,7 +154,7 @@ class PhotoShootWebAppApplicationTests {
 
 	@Test
 	public void testFindImageByUser() {
-		User user = userRepository.findById(1L).get();
+		User user = userRepository.findById(3L).get();
 		List<Image> imageList = imageRepository.findByUser(user);
 		for (Image image : imageList) {
 			System.out.println(image.getDescription());
@@ -204,5 +205,16 @@ class PhotoShootWebAppApplicationTests {
 		for (Rating rating : ratingList) {
 			System.out.println(rating.getRating());
 		}
+	}
+
+	@Test
+	@Transactional
+	public void updateComment() {
+		Comment comment = commentRepository.getOne(1L);
+		User user = userRepository.getOne(3L);
+		comment.setUser(user);
+		comment.setComment("Very nice !!!");
+		comment.setCreatedAt("2020-04-19");
+		commentRepository.saveAndFlush(comment);
 	}
 }

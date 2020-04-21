@@ -15,12 +15,12 @@ public class Rating {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnore
+    @JsonIgnoreProperties(value = {"email", "profilePic", "password", "createdAt", "images"})
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "image_id")
-    @JsonIgnore
+    @JsonIgnoreProperties(value = {"user", "image", "description", "resolution", "comments", "ratings", "categories"})
     private Image image;
 
     private int rating;

@@ -1,0 +1,28 @@
+<div class="w-100 p-3" id="image-container">
+  <mat-card class="example-card">
+    <mat-card-header *ngIf="this.router.url.indexOf('/images/') > -1">
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title *ngIf="image.user?.username">
+        <a [routerLink]="['/users/', image.user.id]">
+          {{ image.user.username }}
+        </a>
+      </mat-card-title>
+      <mat-card-subtitle *ngIf="image.user?.email">{{
+        image.user.email
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="thumbnail" />
+    <mat-card-content *ngIf="this.router.url.indexOf('/images/') > -1">
+      <p>
+        {{ image.description }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<br />
+<br />
+<div *ngIf="this.router.url.indexOf('/images/') > -1">
+  <div class="w-100 p-3" *ngFor="let comment of comments">
+    <app-comment [comment_id]="comment.id"></app-comment>
+  </div>
+</div>

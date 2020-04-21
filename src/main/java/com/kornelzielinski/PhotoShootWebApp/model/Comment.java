@@ -14,16 +14,18 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "image_id")
-    @JsonIgnore
+    @JsonIgnoreProperties(value = {"user", "image", "description", "resolution", "comments", "ratings", "categories"})
     private Image image;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnore
+    @JsonIgnoreProperties(value = {"email", "profilePic", "password", "createdAt", "images"})
     private User user;
 
     private String comment;
-    private String created_at;
+
+    @Column(name = "created_at")
+    private String createdAt;
 
     public Comment() {
     }
@@ -60,11 +62,12 @@ public class Comment {
         this.comment = comment;
     }
 
-    public String getCreated_at() {
-        return created_at;
+
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }

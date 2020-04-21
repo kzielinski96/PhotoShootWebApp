@@ -1,0 +1,13 @@
+app-image {
+  margin: 0 auto;
+  /* margin-top: 50px; */
+  padding-top: 20px;
+}
+
+mat-grid-list {
+  top: 70px;
+}
+
+.container {
+  max-width: 100%;
+}

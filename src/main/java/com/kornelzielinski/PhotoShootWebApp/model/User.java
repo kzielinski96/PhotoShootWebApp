@@ -23,7 +23,6 @@ public class User {
     @Lob
     @Type(type = "org.hibernate.type.BinaryType")
     @Column(name = "profile_pic")
-    @JsonIgnore
     private byte[] profilePic;
 
     private String password;

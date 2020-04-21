@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3" id="user-section">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{ user.username }}</mat-card-title>
+        </mat-card-header>
+        <img *ngIf="user.profilePic" mat-card-image [src]="thumbnail" />
+        <mat-card-content>
+          <p>
+            Email:
+            {{ user.email }}
+          </p>
+          <p>
+            Joined:
+            {{ user.createdAt }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-9" id="images-section">
+      <div class="row" *ngFor="let image of images">
+        <a [routerLink]="['/images/', image.id]">
+          <app-image [image_id]="image.id"></app-image>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

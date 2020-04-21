@@ -1,0 +1,15 @@
+<!-- <div class="container">
+  <div class="row" *ngFor="let image of images">
+    <app-image [image_id]="image.id"></app-image>
+  </div>
+</div> -->
+
+<div class="container">
+  <mat-grid-list cols="3">
+    <mat-grid-tile *ngFor="let image of images">
+      <a [routerLink]="['/images/', image.id]">
+        <app-image [image_id]="image.id"></app-image>
+      </a>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

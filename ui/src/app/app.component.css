@@ -1,0 +1,18 @@
+span {
+  padding-left: 10px;
+}
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+}
+
+mat-nav-list {
+  top: 100px;
+}

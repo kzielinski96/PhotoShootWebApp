@@ -17,13 +17,12 @@ public class Image {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties("images")
+    @JsonIgnoreProperties(value = {"images", "profilePic"})
     private User user;
 
     @Lob
     @Type(type = "org.hibernate.type.BinaryType")
-    @JsonIgnore
-    private byte[] data;
+    private byte[] image;
 
     private String description;
     private String resolution;
@@ -61,12 +60,12 @@ public class Image {
         this.user = user;
     }
 
-    public byte[] getData() {
-        return data;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setData(byte[] data) {
-        this.data = data;
+    public void setImage(byte[] data) {
+        this.image = data;
     }
 
     public String getDescription() {
