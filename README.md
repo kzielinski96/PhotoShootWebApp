@@ -3,10 +3,8 @@ Very basic Web App enabling inserting and downloading images into the Database, 
 
 Seeing how I had some problems with deployment, as for now in order to start working with it I suggest to using these commands in the root directory:
 
-mvn clean install -DskipTests
-mvn spring-boot:run
+**mvn clean install -DskipTests**  **mvn spring-boot:run**
 
 and then in the /ui directory:
 
-npm install
-npm start
+**npm install**  **npm start**
